@@ -1,14 +1,14 @@
-export interface Category {
+export type Category = {
     id: number;
     name: string;
   }
   
-  export interface Tag {
+  export type Tag = {
     id: number;
     name: string;
   }
   
-  export interface Pet {
+  export type Pet = {
     id: number;
     category: Category;
     name: string;

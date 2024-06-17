@@ -1,11 +1,14 @@
-import { get, post, put, del } from '../src/apiClient';
-import { Category, Pet, Tag } from '../src/types';
+import { get, post, auth } from '../../apiClient';
+import { Category, Pet, Tag } from '../../types';
 
 describe('Smoke Tests', () => {
     
     const petEndPoint = '/v2/pet';
     
     it('Should Get "Pet" ', async () => {
+        const authResp =await auth();
+        expect(authResp.status).toBe(200);
+
         const response = await get(petEndPoint+'/1');
 
         expect(response.status).toBe(200);
@@ -13,6 +16,9 @@ describe('Smoke Tests', () => {
     });
 
     it('Should Post "New Pet"', async () => {
+        
+        const authResp =await auth();
+        expect(authResp.status).toBe(200);
 
         const tags:Tag = {
             id:1,
